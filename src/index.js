@@ -1,5 +1,3 @@
-import {fetchData, testConsole} from './modules/data.js'
-console.log("Test")
+import {processData} from './modules/data.js'
 
-fetchData()
-testConsole()
+processData()
