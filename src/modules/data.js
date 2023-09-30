@@ -88,9 +88,8 @@ async function processData() {
         }
     };
 
-    //console.log(weatherJSON)
-    
-    console.log(forecastObj)
+
+    return forecastObj
 
 
 }

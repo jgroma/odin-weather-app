@@ -1,0 +1,11 @@
+/*#search-btn {
+    color: blue;
+}*/
+
+body {
+    background: #86BBD8;
+}
+
+.day-card, .location {
+    margin-bottom: 1em;
+}
