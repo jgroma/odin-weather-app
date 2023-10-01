@@ -29,6 +29,13 @@ function getDate(rawDate) {
 
 }
 
+function getLocalTime(timeString) {
+    let stringArr = timeString.split(' ')
+    let time = stringArr[1];
+
+    return time;
+}
+
 async function processData() {
     const weatherJSON = await fetchData()
 
@@ -36,6 +43,7 @@ async function processData() {
     const country = weatherJSON.location.country;
     const localTime = weatherJSON.location.localtime;
     const currentDate = getDate(localTime);
+    const time = getLocalTime(localTime);
 
     const currentDescription = weatherJSON.current.condition.text;
     const currentTempC = weatherJSON.current.temp_c;
@@ -60,6 +68,7 @@ async function processData() {
 
     const forecastObj = {
         location: {
+            time: time,
             name: name,
             country: country
         },
@@ -87,6 +96,8 @@ async function processData() {
             humidity: dayThreeHumidity
         }
     };
+
+    console.log(weatherJSON)
 
 
     return forecastObj

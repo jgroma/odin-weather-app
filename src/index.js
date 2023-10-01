@@ -32,3 +32,40 @@ tempSwitchBtn.addEventListener("click", () => {
     }
     
 })
+
+const forecastContainer = document.getElementById("forecast-container");
+
+//const slidesContainer = document.getElementById("slides-container");
+//const slide = document.querySelector(".slide");
+//const prevSlideBtn = document.getElementById("prev-slide-btn");
+//const nextSlideBtn = document.getElementById("next-slide-btn");
+
+//nextSlideBtn.addEventListener("click", (event) => {
+//    const slideWidth = slide.clientWidth;
+//    slidesContainer.scrollLeft += slideWidth;
+//    console.log("slid right")
+//})
+
+//prevSlideBtn.addEventListener("click", (event) => {
+//    const slideWidth = slide.clientWidth;
+//    slidesContainer.scrollLeft -= slideWidth;
+//    console.log("slid left")
+//});
+
+forecastContainer.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target.id === "prev-slide-btn") {
+        const slidesContainer = document.getElementById("slides-container");
+        const slide = document.querySelector(".slide");
+
+        const slideWidth = slide.clientWidth;
+        slidesContainer.scrollLeft -= slideWidth;
+    } else if (target.id === "next-slide-btn") {
+        const slidesContainer = document.getElementById("slides-container");
+        const slide = document.querySelector(".slide");
+
+        const slideWidth = slide.clientWidth;
+        slidesContainer.scrollLeft += slideWidth;
+    }
+})
