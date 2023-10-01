@@ -1,5 +1,7 @@
 import {processData} from './data.js'
 
+let globalForecastArr;
+
 function changeColorTime(isDay) {
    
     if (isDay == 0) {
@@ -10,20 +12,14 @@ function changeColorTime(isDay) {
 }
 
 
-//function switchUnits() {
-//    const currentUnit = document.getElementsByClassName("temp");
-
-//    if (currentUnit)
-//}
-
 async function displayForecast() {
     const forecastObj = await processData();
-    const forecastArr = Object.values(forecastObj);
-    const locationObj = forecastArr.shift();
-    let isDay = forecastArr[0].isDay;
-    console.log(forecastArr);
+    globalForecastArr = Object.values(forecastObj);
+    const locationObj = globalForecastArr.shift();
+    let isDay = globalForecastArr[0].isDay;
+
     console.log(locationObj);
-    console.log(isDay)
+    console.log(globalForecastArr);
 
     const forecastContainer = document.getElementById("forecast-container");
     //to clear previous forecast
@@ -36,7 +32,8 @@ async function displayForecast() {
     locationData.innerHTML = `${locationObj.name}, ${locationObj.country}`;
     forecastContainer.appendChild(locationData);
 
-    forecastArr.forEach((obj) => {
+    globalForecastArr.forEach((obj) => {
+
         const dayCard = document.createElement("div");
         dayCard.classList.add("day-card")
 
@@ -46,6 +43,7 @@ async function displayForecast() {
         const temp = document.createElement("p");
         temp.classList.add("temp")
         temp.innerHTML = `${obj.tempC}&#8451`;
+
         
         const description = document.createElement("p");
         description.innerHTML = `${obj.description}`;
@@ -60,6 +58,22 @@ async function displayForecast() {
         dayCard.appendChild(humidity);
         forecastContainer.appendChild(dayCard);
     })
+
+    return globalForecastArr;
 }
 
-export {displayForecast}
+function switchUnits(unit, dataArr) {
+
+    dataArr.forEach((obj, index) => {
+        const tempToSwitch = document.getElementsByClassName("temp")[index];
+
+        if (unit == "Fahrenheit") {
+            tempToSwitch.innerHTML = `${obj.tempC}&#8451`;
+        } else if (unit == "Celcius") {
+            tempToSwitch.innerHTML = `${obj.tempF}&#8457`;
+        }
+    })
+
+}
+
+export {displayForecast, switchUnits, globalForecastArr}
