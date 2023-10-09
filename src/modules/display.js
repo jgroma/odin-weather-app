@@ -114,6 +114,4 @@ function switchUnits(unit, dataArr) {
 
 }
 
-//function 
-
 export {displayForecast, switchUnits, globalForecastArr}
