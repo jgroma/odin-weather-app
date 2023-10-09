@@ -3,11 +3,14 @@ import {processData} from './data.js'
 let globalForecastArr;
 
 function changeColorTime(isDay) {
+    const forecastContainer = document.getElementById("forecast-container");
    
     if (isDay == 0) {
-        document.body.style.background = "#33658A"
+        document.body.style.background = "#4A5899"
+        forecastContainer.style.color = "white";
     } else {
-        document.body.style.background = "#86BBD8"
+        document.body.style.background = "#CAE9FF"
+        forecastContainer.style.color = "black";
     }
 }
 
@@ -82,7 +85,7 @@ async function displayForecast() {
         description.innerHTML = `${obj.description}`;
 
         const humidity = document.createElement("p");
-        humidity.innerHTML = `Humidity: ${obj.humidity}`;
+        humidity.innerHTML = `Humidity: ${obj.humidity}%`;
 
 
         dayCard.appendChild(date);
