@@ -6,20 +6,19 @@
     <title>Weather App</title>
 </head>
 <body>
-    <header class="header-container">
-        <div class="form-container">
-            <form action="" class="form">
-                <input id="search" type="text" name="location" placeholder="See the weather in...">
-                <button type="submit" id="search-btn">Search</button>
-            </form>
-        </div>
-        <button id="temp-switch">&#8457</button>
-    </header>
-    <div id="forecast-container">
-
+    <div class="main-container">
+        <header class="header-container">
+            <div class="form-container">
+                <form action="" class="form">
+                    <input id="search" type="text" name="location" placeholder="See the weather in..." class="search-bar">
+                    <button type="submit" id="search-btn">Search</button>
+                </form>
+            </div>
+            <button id="temp-switch">&#8457</button>
+        </header>
+        <div id="forecast-container"></div>
     </div>
 
-    </form>
     <script src="main.js"></script>
     <!--<script src="./index.bundle.js"></script>-->
 </body>
